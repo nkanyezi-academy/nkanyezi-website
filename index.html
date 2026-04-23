@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nkanyezi Digital Skills Academy | Building Stars. Raising Creators.</title>
+<meta name="description" content="South Africa's premier digital skills academy for children and families. Learn, Create, Earn, Build.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #080f1e;
+    --navy-mid: #0d1a2e;
+    --navy-card: #111f35;
+    --navy-light: #162845;
+    --gold: #b8963e;
+    --gold-bright: #d4ab52;
+    --gold-pale: #e8d5a3;
+    --gold-muted: rgba(184,150,62,0.15);
+    --white: #f4f0e8;
+    --white-pure: #ffffff;
+    --text-body: #a8b8cc;
+    --text-dim: #5a6e88;
+    --line: rgba(184,150,62,0.12);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    background: rgba(8,15,30,0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    display: flex; flex-direction: column; gap: 1px;
+  }
+  .nav-logo-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--white-pure); line-height: 1;
+  }
+  .nav-logo-sub {
+    font-size: 0.6rem; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 3rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--text-dim);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--navy);
+    background: var(--gold); padding: 0.6rem 1.6rem;
+    text-decoration: none; transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold-bright); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 5vw;
+    padding-top: 72px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-texture {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 55% 65% at 75% 45%, rgba(184,150,62,0.055) 0%, transparent 65%),
+      radial-gradient(ellipse 35% 40% at 15% 60%, rgba(13,26,46,0.8) 0%, transparent 70%);
+  }
+
+  /* Geometric accent */
+  .hero-geo {
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 50%; z-index: 0;
+    border-left: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .hero-geo::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(15deg);
+    width: 480px; height: 480px;
+    border: 1px solid rgba(184,150,62,0.07);
+    border-radius: 0;
+  }
+  .hero-geo::after {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(30deg);
+    width: 340px; height: 340px;
+    border: 1px solid rgba(184,150,62,0.05);
+  }
+
+  .hero-left { position: relative; z-index: 2; padding: 5rem 5vw 5rem 0; }
+  .hero-right { position: relative; z-index: 2; padding: 5rem 0 5rem 5vw; display: flex; flex-direction: column; justify-content: center; gap: 2rem; }
+
+  .hero-eyebrow {
+    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 1px; background: var(--gold);
+  }
+
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 5.5vw, 6rem);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--white-pure);
+    margin-bottom: 2.5rem;
+  }
+  .hero-h1 em {
+    font-style: italic; color: var(--gold);
+    display: block;
+  }
+
+  .hero-body {
+    font-size: 0.95rem; line-height: 1.85;
+    color: var(--text-body); max-width: 420px;
+    margin-bottom: 3rem; font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-gold {
+    background: var(--gold); color: var(--navy);
+    padding: 0.95rem 2.4rem; font-size: 0.7rem;
+    font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.3s;
+    display: inline-block;
+  }
+  .btn-gold:hover { background: var(--gold-bright); }
+  .btn-outline {
+    border: 1px solid rgba(184,150,62,0.35); color: var(--gold);
+    padding: 0.95rem 2.4rem; font-size: 0.7rem;
+    font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(184,150,62,0.06); }
+
+  /* Hero video */
+  .hero-video-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--navy-mid);
+    position: relative;
+  }
+
+  .hero-manifesto {
+    border-left: 2px solid var(--gold);
+    padding: 1.2rem 0 1.2rem 1.8rem;
+  }
+  .hero-manifesto p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-style: italic; font-weight: 300;
+    color: var(--gold-pale); line-height: 1.6;
+  }
+  .hero-manifesto cite {
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-dim);
+    display: block; margin-top: 0.7rem; font-style: normal;
+  }
+
+  /* ─── SECTION BASE ─── */
+  .sec { padding: 7rem 5vw; }
+  .sec-sm { padding: 5rem 5vw; }
+  .sec-eyebrow {
+    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem;
+  }
+  .sec-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
+  .sec-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-weight: 300; line-height: 1.12; letter-spacing: -0.005em;
+    color: var(--white-pure); margin-bottom: 1.4rem;
+  }
+  .sec-h2 em { font-style: italic; color: var(--gold); }
+  .sec-lead {
+    font-size: 0.95rem; line-height: 1.85;
+    color: var(--text-body); font-weight: 300;
+    max-width: 540px;
+  }
+
+  /* ─── SAFEPICKUP ─── */
+  .sp-section { background: var(--navy-mid); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+  .sp-problem {
+    background: var(--navy-card);
+    border-left: 3px solid #c0392b;
+    padding: 2rem 2.5rem;
+    margin-bottom: 4rem;
+    max-width: 820px;
+  }
+  .sp-problem-label {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #c0392b; margin-bottom: 0.8rem;
+  }
+  .sp-problem-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; line-height: 1.6;
+    color: var(--white-pure);
+  }
+  .sp-problem-body {
+    font-size: 0.88rem; color: var(--text-body); line-height: 1.8;
+    margin-top: 0.8rem; font-weight: 300;
+  }
+
+  .sp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+  .sp-scenario-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); margin-bottom: 3rem; }
+  .sp-scenario {
+    background: var(--navy-card); padding: 2rem;
+  }
+  .sp-scenario-label {
+    font-size: 0.58rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 1rem; padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .sp-scenario-label.without { color: #c0392b; }
+  .sp-scenario-label.with { color: #27ae60; }
+  .sp-scenario p { font-size: 0.88rem; color: var(--text-body); line-height: 1.75; font-weight: 300; }
+
+  .sp-features { display: flex; flex-direction: column; gap: 0; }
+  .sp-feature {
+    display: grid; grid-template-columns: 48px 1fr;
+    gap: 1.5rem; align-items: start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .sp-feature:first-child { border-top: 1px solid var(--line); }
+  .sp-feature-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 300; color: rgba(184,150,62,0.3);
+    line-height: 1; padding-top: 0.2rem;
+  }
+  .sp-feature-body strong {
+    display: block; font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.02em; color: var(--white-pure); margin-bottom: 0.3rem;
+  }
+  .sp-feature-body span { font-size: 0.82rem; color: var(--text-body); line-height: 1.6; font-weight: 300; }
+
+  .sp-trust {
+    border: 1px solid rgba(39,174,96,0.2); background: rgba(39,174,96,0.04);
+    padding: 1.4rem 1.8rem; margin-top: 2rem;
+  }
+  .sp-trust-label {
+    font-size: 0.58rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #27ae60; margin-bottom: 0.4rem;
+  }
+  .sp-trust p { font-size: 0.82rem; color: var(--text-body); line-height: 1.6; font-weight: 300; }
+
+  /* Right panel */
+  .sp-right { display: flex; flex-direction: column; gap: 2rem; }
+
+  .sp-pricing-card {
+    background: var(--navy-card); border: 1px solid var(--line); padding: 2.5rem;
+  }
+  .sp-pricing-label {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .sp-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 300; color: var(--white-pure);
+    line-height: 1;
+  }
+  .sp-price span { font-size: 1.2rem; color: var(--text-body); }
+  .sp-price-note { font-size: 0.78rem; color: var(--text-body); margin-top: 0.5rem; font-weight: 300; }
+  .sp-price-trial {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+    color: #27ae60; margin-top: 0.8rem; padding-top: 0.8rem;
+    border-top: 1px solid var(--line);
+  }
+  .sp-pricing-actions { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1.8rem; }
+
+  .sp-quote {
+    border-left: 2px solid var(--gold); padding: 1.5rem 0 1.5rem 1.8rem;
+    background: var(--navy-card);
+    padding: 1.8rem 2rem;
+    border-left: 2px solid var(--gold);
+  }
+  .sp-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-style: italic; font-weight: 300;
+    color: var(--gold-pale); line-height: 1.65; margin-bottom: 0.8rem;
+  }
+  .sp-quote cite { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); font-style: normal; }
+
+  .sp-compliance {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--line);
+  }
+  .sp-compliance-item {
+    background: var(--navy-card); padding: 1.2rem 1.4rem;
+  }
+  .sp-compliance-title { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; color: var(--white-pure); margin-bottom: 0.2rem; }
+  .sp-compliance-body { font-size: 0.68rem; color: var(--text-body); line-height: 1.5; font-weight: 300; }
+
+  /* ─── DIVISIONS ─── */
+  .divisions-section { background: var(--navy); }
+  .divisions-header { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: end; margin-bottom: 4rem; }
+  .divisions-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .division-card {
+    background: var(--navy-card); padding: 2.8rem 2rem;
+    position: relative; transition: background 0.3s;
+    cursor: default;
+  }
+  .division-card:hover { background: var(--navy-light); }
+  .division-card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .division-card:hover::after { transform: scaleX(1); }
+  .div-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 300;
+    color: rgba(184,150,62,0.08); line-height: 1; margin-bottom: 1.5rem;
+    display: block;
+  }
+  .div-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; color: var(--gold);
+    margin-bottom: 0.3rem; display: block;
+  }
+  .div-sub {
+    font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--text-dim);
+    margin-bottom: 1.2rem; display: block;
+  }
+  .div-desc { font-size: 0.82rem; color: var(--text-body); line-height: 1.7; font-weight: 300; }
+
+  /* ─── WORKSHOP ─── */
+  .workshop-section { background: var(--navy-mid); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .workshop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .workshop-card { border: 1px solid var(--line); background: var(--navy-card); }
+  .workshop-card-header { padding: 2.5rem; border-bottom: 1px solid var(--line); }
+  .workshop-card-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300; color: var(--white-pure);
+    line-height: 1; margin-top: 0.5rem;
+  }
+  .workshop-card-price span { font-size: 1rem; color: var(--text-body); }
+  .workshop-card-note { font-size: 0.72rem; color: var(--text-body); margin-top: 0.4rem; font-weight: 300; }
+  .workshop-card-body { padding: 2rem 2.5rem; }
+  .workshop-includes { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .workshop-includes li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--line);
+    font-size: 0.84rem; color: var(--text-body); line-height: 1.5; font-weight: 300;
+  }
+  .workshop-includes li::before {
+    content: '—'; color: var(--gold); font-weight: 300; flex-shrink: 0; margin-top: 0.05rem;
+  }
+  .workshop-upsell {
+    border: 1px solid rgba(184,150,62,0.2); background: rgba(184,150,62,0.04);
+    padding: 2rem 2.5rem; margin-top: 1.5rem;
+  }
+  .upsell-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+  .upsell-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: var(--white-pure); margin-bottom: 0.3rem; }
+  .upsell-price { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--gold); }
+  .upsell-desc { font-size: 0.8rem; color: var(--text-body); line-height: 1.6; margin-top: 0.5rem; font-weight: 300; }
+
+  /* ─── ABOUT ─── */
+  .about-section { background: var(--navy); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .about-credentials { margin: 2.5rem 0; display: flex; flex-direction: column; gap: 0; }
+  .credential {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    padding: 1.4rem 0; border-bottom: 1px solid var(--line);
+  }
+  .credential:first-child { border-top: 1px solid var(--line); }
+  .cred-marker { width: 3px; background: var(--gold); align-self: stretch; flex-shrink: 0; }
+  .cred-text strong { display: block; font-size: 0.84rem; font-weight: 600; color: var(--white-pure); margin-bottom: 0.2rem; }
+  .cred-text span { font-size: 0.78rem; color: var(--text-body); font-weight: 300; }
+  .about-reg { font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.08em; margin-top: 2rem; }
+
+  .about-right { display: flex; flex-direction: column; gap: 2rem; }
+  .about-quote-block {
+    border-top: 2px solid var(--gold); padding-top: 2rem;
+  }
+  .about-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 300; font-style: italic;
+    color: var(--white-pure); line-height: 1.55; margin-bottom: 1.2rem;
+  }
+  .about-quote-attr { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+
+  .about-statement {
+    background: var(--navy-card); border: 1px solid var(--line); padding: 2rem;
+  }
+  .about-statement p { font-size: 0.88rem; color: var(--text-body); line-height: 1.85; font-weight: 300; }
+
+  /* ─── CONTACT ─── */
+  .contact-section { background: var(--navy-mid); border-top: 1px solid var(--line); }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-cards { display: flex; flex-direction: column; gap: 1px; background: var(--line); margin-top: 2.5rem; }
+  .contact-card {
+    background: var(--navy-card); padding: 1.6rem 2rem;
+    text-decoration: none; color: inherit;
+    display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: center;
+    transition: background 0.3s;
+  }
+  .contact-card:hover { background: var(--navy-light); }
+  .cc-label { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.3rem; }
+  .cc-value { font-size: 0.88rem; font-weight: 500; color: var(--white-pure); }
+  .cc-arrow { font-size: 0.8rem; color: var(--gold); justify-self: end; }
+
+  .contact-cta-block { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .wa-btn {
+    background: #1a7a43; color: var(--white-pure);
+    padding: 1.1rem 2.4rem; font-size: 0.7rem;
+    font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.3s; display: inline-block; text-align: center;
+  }
+  .wa-btn:hover { background: #22994f; }
+
+  .contact-right-info {
+    padding-top: 6rem;
+  }
+  .contact-divider { height: 1px; background: var(--line); margin: 2rem 0; }
+  .contact-detail { margin-bottom: 1.5rem; }
+  .contact-detail-label { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+  .contact-detail-value { font-size: 0.9rem; color: var(--text-body); font-weight: 300; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy); border-top: 1px solid var(--line);
+    padding: 2.5rem 5vw;
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 2rem;
+  }
+  .footer-left { display: flex; flex-direction: column; gap: 0.3rem; }
+  .footer-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; color: var(--gold); }
+  .footer-reg { font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.06em; }
+  .footer-center { text-align: center; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.08em; }
+  .footer-right { text-align: right; font-size: 0.65rem; color: var(--text-dim); }
+  .footer-copyright { font-size: 0.62rem; color: var(--text-dim); margin-top: 0.3rem; }
+
+  /* ─── DIVIDER LINE ─── */
+  .rule { width: 100%; height: 1px; background: var(--line); }
+
+  /* ─── ANIMATIONS ─── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero, .sp-grid, .divisions-header, .workshop-grid, .about-grid, .contact-inner { grid-template-columns: 1fr; }
+    .hero { padding: 8rem 5vw 4rem; }
+    .hero-right { padding: 0; }
+    .hero-geo { display: none; }
+    .sec, .sec-sm { padding: 4rem 5vw; }
+    .divisions-grid { grid-template-columns: 1fr 1fr; }
+    .sp-scenario-pair { grid-template-columns: 1fr; }
+    .sp-compliance { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; text-align: center; }
+    .footer-right { text-align: center; }
+    .contact-right-info { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-main">Nkanyezi Digital Skills Academy</span>
+    <span class="nav-logo-sub">Building Stars. Raising Creators.</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#safepickup">SafePickup</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#workshop">Workshop</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/27634797549" class="nav-cta">Get In Touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-geo"></div>
+
+  <div class="hero-left reveal">
+    <div class="hero-eyebrow">Proudly South African</div>
+    <h1 class="hero-h1">
+      Building Stars.<br>
+      <em>Raising Creators.</em>
+    </h1>
+    <p class="hero-body">
+      We equip South African children and families with real digital skills — so they stop consuming other people's content and start building their own futures. Digital literacy. Digital safety. Digital opportunity.
+    </p>
+    <div class="hero-actions">
+      <a href="#workshop" class="btn-gold">Join a Workshop</a>
+      <a href="#safepickup" class="btn-outline">SafePickup for Schools</a>
+    </div>
+  </div>
+
+  <div class="hero-right reveal">
+    <div class="hero-video-wrap">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        style="width:100%;height:100%;object-fit:cover;display:block;"
+      >
+        <source src="hero-video.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-manifesto">
+      <p>"Our children are consuming other people's stories. It is time they told their own."</p>
+      <cite>Nkanyezi Digital Skills Academy</cite>
+    </div>
+  </div>
+</section>
+
+<!-- SAFEPICKUP -->
+<section class="sec sp-section" id="safepickup">
+  <div class="sec-eyebrow reveal">Child Safety Technology</div>
+  <h2 class="sec-h2 reveal">Nkanyezi <em>SafePickup</em></h2>
+
+  <div class="sp-problem reveal">
+    <div class="sp-problem-label">The Problem</div>
+    <p class="sp-problem-text">Every day, South African schools face the same unanswered question: who is picking up this child — and do they have the right to?</p>
+    <p class="sp-problem-body">Without a system, any adult can walk in and claim a child. A teacher has seconds to decide. A wrong decision can cost a child their safety. Most schools are still relying on paper registers, memory, and instinct. That is not good enough.</p>
+  </div>
+
+  <div class="sp-grid">
+    <div class="reveal">
+      <div class="sp-scenario-pair">
+        <div class="sp-scenario">
+          <div class="sp-scenario-label without">Without SafePickup</div>
+          <p>A stranger says "I am collecting Amahle today." The teacher checks the paper register. The name is not there. The parent cannot be reached. What happens next?</p>
+        </div>
+        <div class="sp-scenario">
+          <div class="sp-scenario-label with">With SafePickup</div>
+          <p>The collector enters Amahle's unique PIN. Her photo appears on screen. The teacher verifies the face. A WhatsApp reaches the parent instantly. Safe. Done. Recorded.</p>
+        </div>
+      </div>
+
+      <div class="sp-features">
+        <div class="sp-feature">
+          <div class="sp-feature-num">01</div>
+          <div class="sp-feature-body"><strong>Photo Verification at Every Pickup</strong><span>Every collection is photographed and time-stamped. No child leaves without a permanent, searchable record.</span></div>
+        </div>
+        <div class="sp-feature">
+          <div class="sp-feature-num">02</div>
+          <div class="sp-feature-body"><strong>Instant WhatsApp to Parents</strong><span>The moment a child is collected, the parent receives confirmation. No uncertainty. No missed calls.</span></div>
+        </div>
+        <div class="sp-feature">
+          <div class="sp-feature-num">03</div>
+          <div class="sp-feature-body"><strong>Unique PIN Per Child</strong><span>Each child has a secure, auto-generated 4-digit PIN. No two children share a code. No room for error.</span></div>
+        </div>
+        <div class="sp-feature">
+          <div class="sp-feature-num">04</div>
+          <div class="sp-feature-body"><strong>Teacher Attendance Management</strong><span>Staff check in on the tablet. Principals manage absences and leave requests from one secure dashboard.</span></div>
+        </div>
+        <div class="sp-feature">
+          <div class="sp-feature-num">05</div>
+          <div class="sp-feature-body"><strong>Emergency Panic Button</strong><span>One tap alerts all designated contacts simultaneously. Designed for the moments that cannot wait.</span></div>
+        </div>
+        <div class="sp-feature">
+          <div class="sp-feature-num">06</div>
+          <div class="sp-feature-body"><strong>Private Accounts. POPIA Compliant.</strong><span>Each school's data is entirely private. Stored on South African servers. Compliant with South African law.</span></div>
+        </div>
+      </div>
+
+      <div class="sp-trust">
+        <div class="sp-trust-label">Compliance</div>
+        <p>Built for South African schools. Data hosted in South Africa. POPIA compliant. No hidden fees. No long-term contracts.</p>
+      </div>
+    </div>
+
+    <!-- Right panel -->
+    <div class="sp-right reveal">
+      <div class="sp-pricing-card">
+        <div class="sp-pricing-label">Subscription Pricing</div>
+        <div class="sp-price">R599 <span>/ month</span></div>
+        <div class="sp-price-note">Per school. Cancel anytime. No setup fee. No contract.</div>
+        <div class="sp-price-trial">First month completely free — no commitment required.</div>
+        <div class="sp-pricing-actions">
+          <a href="https://safepickup.co.za" class="btn-gold" target="_blank">View the Live App</a>
+          <a href="https://wa.me/27634797549?text=Hi%20Nkanyezi%2C%20I%27m%20interested%20in%20SafePickup%20for%20my%20school" class="btn-outline">Book a Free Demo</a>
+        </div>
+      </div>
+
+      <div class="sp-quote">
+        <p>"No contract pressure. We set it up for you, train your staff, and give you a full month to experience it. If your school does not love it, you pay nothing."</p>
+        <cite>Melissa Dlamini-Mkhwanazi &mdash; Founder, Nkanyezi Digital Skills Academy</cite>
+      </div>
+
+      <div class="sp-compliance">
+        <div class="sp-compliance-item">
+          <div class="sp-compliance-title">SA Hosted</div>
+          <div class="sp-compliance-body">Data stored on South African servers for maximum speed and compliance.</div>
+        </div>
+        <div class="sp-compliance-item">
+          <div class="sp-compliance-title">POPIA</div>
+          <div class="sp-compliance-body">Fully compliant with the Protection of Personal Information Act.</div>
+        </div>
+        <div class="sp-compliance-item">
+          <div class="sp-compliance-title">Private</div>
+          <div class="sp-compliance-body">Each school's data is completely isolated. No shared information.</div>
+        </div>
+        <div class="sp-compliance-item">
+          <div class="sp-compliance-title">Secure</div>
+          <div class="sp-compliance-body">SSL encrypted. Role-based access. PIN-protected child records.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVISIONS -->
+<section class="sec divisions-section" id="programs">
+  <div class="divisions-header">
+    <div class="reveal">
+      <div class="sec-eyebrow">Our Four Divisions</div>
+      <h2 class="sec-h2">Learn. Create.<br><em>Earn. Build.</em></h2>
+    </div>
+    <div class="reveal">
+      <p class="sec-lead">Four pathways. One mission. Every child and family that comes through Nkanyezi leaves with more than skills — they leave with a mindset that changes their relationship with the digital world permanently.</p>
+    </div>
+  </div>
+
+  <div class="divisions-grid reveal">
+    <div class="division-card">
+      <span class="div-num">01</span>
+      <span class="div-name">Learn</span>
+      <span class="div-sub">Nkanyezi Learn</span>
+      <p class="div-desc">Foundational digital literacy, phonics, reading, and coding concepts for children and families. Home of the Little Star Readers Program — a structured phonics intervention for early learners.</p>
+    </div>
+    <div class="division-card">
+      <span class="div-num">02</span>
+      <span class="div-name">Create</span>
+      <span class="div-sub">Nkanyezi Create</span>
+      <p class="div-desc">Animation, storytelling, content creation, and digital art. Where Mama kaNkanyezi — an original South African animated series — and other African stories are brought to life on screen.</p>
+    </div>
+    <div class="division-card">
+      <span class="div-num">03</span>
+      <span class="div-name">Earn</span>
+      <span class="div-sub">Nkanyezi Earn</span>
+      <p class="div-desc">Turning digital skills into sustainable income. Freelancing, online business, and monetisation strategies designed for South African parents and young creators ready to enter the digital economy.</p>
+    </div>
+    <div class="division-card">
+      <span class="div-num">04</span>
+      <span class="div-name">Build</span>
+      <span class="div-sub">Nkanyezi Build</span>
+      <p class="div-desc">App development, digital product creation, and entrepreneurship. Where ideas become real products — like SafePickup, conceived and built within Nkanyezi to solve a real South African problem.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP -->
+<section class="sec workshop-section" id="workshop">
+  <div class="workshop-grid">
+    <div class="reveal">
+      <div class="sec-eyebrow">Flagship Parent Program</div>
+      <h2 class="sec-h2">Raise a <em>Creator</em> Workshop</h2>
+      <p class="sec-lead">A half-day workshop that fundamentally changes how your family relates to the internet — from passive consumers to active, intentional creators.</p>
+      <p style="font-size:0.88rem;color:var(--text-body);line-height:1.85;margin-top:2rem;font-weight:300;">You arrive as a parent watching your child spend hours on a screen. You leave with a strategy, practical tools, and a 30-day plan to begin building something real together. This is not a presentation. This is a working session designed for South African families ready to act.</p>
+      <a href="https://wa.me/27634797549?text=Hi%20Nkanyezi%2C%20I%27d%20like%20to%20register%20for%20the%20Raise%20a%20Creator%20Workshop" class="btn-gold" style="margin-top:2.5rem;display:inline-block;">Reserve Your Seat</a>
+    </div>
+
+    <div class="reveal">
+      <div class="workshop-card">
+        <div class="workshop-card-header">
+          <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">Raise a Creator</div>
+          <div class="workshop-card-price">R1,500 <span>per parent</span></div>
+          <div class="workshop-card-note">Half day · All materials included · Certificate of completion</div>
+        </div>
+        <div class="workshop-card-body">
+          <ul class="workshop-includes">
+            <li>Branded Nkanyezi workbook and goodie bag</li>
+            <li>Live digital tools demonstration and hands-on practice</li>
+            <li>Personalised family digital action plan</li>
+            <li>30-day WhatsApp support group access</li>
+            <li>Certificate of completion</li>
+            <li>Access to Nkanyezi online resource library</li>
+          </ul>
+        </div>
+      </div>
+      <div class="workshop-upsell">
+        <div class="upsell-label">For Workshop Graduates Only</div>
+        <div class="upsell-name">Creator Pro Program</div>
+        <div class="upsell-price">R2,500</div>
+        <div class="upsell-desc">Advanced content creation, monetisation strategies, and building your child's first real digital product. Available only to Raise a Creator graduates.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec about-section" id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="sec-eyebrow">The Founder</div>
+      <h2 class="sec-h2">Melissa<br><em>Dlamini-Mkhwanazi</em></h2>
+      <p style="font-size:0.9rem;color:var(--text-body);line-height:1.85;font-weight:300;margin-bottom:0.5rem;">Founder and Director of Nkanyezi Digital Skills Academy. An intellectual property lawyer, qualified educator, and digital entrepreneur — Melissa built Nkanyezi to close the gap between South African children and a digital economy that is already shaping their future.</p>
+      <div class="about-credentials">
+        <div class="credential">
+          <div class="cred-marker"></div>
+          <div class="cred-text">
+            <strong>LLB — University of Johannesburg</strong>
+            <span>Bachelor of Laws</span>
+          </div>
+        </div>
+        <div class="credential">
+          <div class="cred-marker"></div>
+          <div class="cred-text">
+            <strong>LLM in Intellectual Property Law — University of Johannesburg</strong>
+            <span>Master of Laws · IP &amp; Digital Rights Specialist</span>
+          </div>
+        </div>
+        <div class="credential">
+          <div class="cred-marker"></div>
+          <div class="cred-text">
+            <strong>Qualified TEFL / TESOL Teacher</strong>
+            <span>Years of international online teaching experience</span>
+          </div>
+        </div>
+      </div>
+      <p class="about-reg">Nkanyezi Digital Skills Academy (PTY) LTD &middot; Reg. 2026/261576/07</p>
+    </div>
+
+    <div class="about-right reveal">
+      <div class="about-quote-block">
+        <p class="about-quote-text">"Our children are consuming other people's stories. It is time they told their own."</p>
+        <p class="about-quote-attr">Melissa Dlamini-Mkhwanazi &mdash; Founder &amp; Director</p>
+      </div>
+      <div class="about-statement">
+        <p>Nkanyezi was built for children who grew up watching other people's stories shape their world. The academy exists to reverse that — to hand the tools of creation, not just consumption, to the next generation of South African young people. The skills are real. The products are real. The opportunity is theirs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="sec-eyebrow">Contact</div>
+      <h2 class="sec-h2">Ready to <em>begin?</em></h2>
+      <p class="sec-lead">Whether you are a parent, a school principal, or a community organisation — we are ready to help. Reach out and we will respond within one business day.</p>
+      <div class="contact-cards">
+        <a href="tel:+27634797549" class="contact-card">
+          <div>
+            <div class="cc-label">Call or WhatsApp</div>
+            <div class="cc-value">+27 63 479 7549</div>
+          </div>
+          <div class="cc-arrow">&#8250;</div>
+        </a>
+        <a href="mailto:nkanyezidigitalskillsacademy@outlook.com" class="contact-card">
+          <div>
+            <div class="cc-label">Email</div>
+            <div class="cc-value">nkanyezidigitalskillsacademy@outlook.com</div>
+          </div>
+          <div class="cc-arrow">&#8250;</div>
+        </a>
+        <a href="https://safepickup.co.za" class="contact-card" target="_blank">
+          <div>
+            <div class="cc-label">SafePickup Application</div>
+            <div class="cc-value">safepickup.co.za</div>
+          </div>
+          <div class="cc-arrow">&#8250;</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-right-info reveal">
+      <div class="contact-cta-block">
+        <a href="https://wa.me/27634797549?text=Hi%20Nkanyezi%2C%20I%27d%20like%20to%20find%20out%20more" class="wa-btn">Message Us on WhatsApp</a>
+        <a href="https://wa.me/27634797549?text=Hi%20Nkanyezi%2C%20I%27d%20like%20to%20register%20for%20the%20Raise%20a%20Creator%20Workshop" class="btn-outline" style="text-align:center;">Register for a Workshop</a>
+        <a href="https://wa.me/27634797549?text=Hi%20Nkanyezi%2C%20I%27m%20interested%20in%20SafePickup%20for%20my%20school" class="btn-outline" style="text-align:center;">Book a SafePickup Demo</a>
+      </div>
+      <div class="contact-divider"></div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Company Registration</div>
+        <div class="contact-detail-value">Nkanyezi Digital Skills Academy (PTY) LTD<br>Reg. 2026/261576/07</div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Intellectual Property</div>
+        <div class="contact-detail-value">All programs, content, brand, and software including Nkanyezi SafePickup are the intellectual property of Nkanyezi Digital Skills Academy (PTY) LTD and are protected under South African copyright law.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo-text">Nkanyezi Digital Skills Academy</div>
+    <div class="footer-reg">Registered PTY LTD &middot; Reg. 2026/261576/07 &middot; South Africa</div>
+  </div>
+  <div class="footer-center">
+    Building Stars. Raising Creators.<br>
+    <span class="footer-copyright">&copy; 2026 Nkanyezi Digital Skills Academy (PTY) LTD. All rights reserved.</span>
+  </div>
+  <div class="footer-right">
+    nkanyezidigital.co.za<br>
+    <span style="color:var(--text-dim);font-size:0.6rem;">safepickup.co.za</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
